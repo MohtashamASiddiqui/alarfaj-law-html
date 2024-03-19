@@ -1,0 +1,40 @@
+@font-face {
+	font-family: tajawal;
+	src: url("/fonts/Tajawal-Regular.ttf") format("TrueType");
+}
+
+.v-application *,
+.v-application p,
+.v-application li,
+.v-application .text-none,
+.v-application .text-h1,
+.v-application .text-h2,
+.v-application .text-h3,
+.v-application .text-h4,
+.v-application .text-h5,
+.v-application .text-h6,
+.v-application .text-subtitle-1,
+.v-application .text-subtitle-2,
+.v-application .text-body-1,
+.v-application .text-body-2,
+.v-application .text-caption,
+.v-application .headline,
+.v-application .title,
+.v-application .display-1,
+.v-list-item .v-list-item__title {
+	font-family: tajawal !important;
+	/* font-size: large !important */
+}
+
+.v-application .headline,
+.v-application .title,
+.v-application .display-1 {
+	/* font-size: xx-large !important; */
+	font-weight: bold !important;
+}
+
+.v-application--is-rtl ol,
+.v-application--is-rtl ul {
+	padding-right: 24px;
+	padding-left: 0;
+}

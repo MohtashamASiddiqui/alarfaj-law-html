@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ar">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+	<meta property="og:image" content="../logo/logoBlueBack.jpg">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.3.7/dist/vuetify.min.css" />
+	<link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="style.css" />
+	<!-- <link rel="stylesheet" href="../style.css"> -->
+	<!-- <link rel="shortcut icon" href="../res/favicon.jpeg" type="image/x-icon"> -->
+
+	<style>
+		[v-cloak] {
+			display: none;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.max-2-lines {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			/* not supported everywhere, but the support level is good */
+			-webkit-box-orient: vertical;
+			/* deprecated but still in use in most browsers, might be replaced by flexbox */
+			height: calc(2 * 20px) !important;
+		}
+
+		.max-3-lines {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			/* not supported everywhere, but the support level is good */
+			-webkit-box-orient: vertical;
+			/* deprecated but still in use in most browsers, might be replaced by flexbox */
+			height: calc(3 * 22px) !important;
+		}
+	</style>
+
+	<title>العرفج وشركاؤه</title>
+</head>
+
+<body>
+	<v-app id="app" v-cloak>
+		<app-toolbar-ar></app-toolbar-ar>
+
+		<v-main app>
+			<app-big-background logo title="عملاؤنا شركاؤنا ونجاحهم نجاحنا"
+				img="https://picsum.photos/id/1031/1000/600?grayscale&blur=2"></app-big-background>
+
+			<app-titled-paragraph id="about" title="من نحن" background-color="white" :paragraphs="paragraphs">
+			</app-titled-paragraph>
+
+			<v-card flat title="News" id="news">
+				<v-card-text>
+					<v-container>
+						<v-row>
+							<v-col cols="12" md="6" lg="4" v-for="item in items">
+								<v-card :href="item.link" style="direction: ltr;">
+									<v-card-text class="body-2 font-weight-bold pb-0 primary white--text">
+										<div class=" max-2-lines">
+											{{ item.title }}
+										</div>
+									</v-card-text>
+									<v-card-actions class="pt-0 primary white--text">
+										<v-spacer></v-spacer>
+										{{ item.date }}
+									</v-card-actions>
+									<v-card-text>
+										<v-row no-gutters>
+											<v-col style=" overflow: hidden; text-overflow: ellipsis;">
+												<span class=" max-3-lines">
+													{{ item.preview }}
+												</span>
+											</v-col>
+											&nbsp;
+										</v-row>
+										<v-row justify="center">
+											<a :href="item.link">المزيد</a>
+										</v-row>
+									</v-card-text>
+								</v-card>
+							</v-col>
+						</v-row>
+						<v-card href="./all/">
+							<v-card-title>
+								<v-row justify="center" class="primary--text">
+									جميع الأخبار والمقالات >>
+								</v-row>
+							</v-card-title>
+						</v-card>
+					</v-container>
+				</v-card-text>
+			</v-card>
+
+			<app-more-info id="expertise" :items="expertise" img title="خبراتنا" background-color="#32618F" dark dense
+				center></app-more-info>
+
+			<app-team id="people" img title="فريق العمل" count="1" :team="team" background-color="#32618F" dark>
+			</app-team>
+
+			<v-card id="contact" dir="ltr">
+				<v-card-text>
+					<v-container>
+						<v-row justify="center">
+							<v-col cols="10" sm="2" lg="2">
+								<a href="https://twitter.com/arfajlaw" target="_blank">
+									<v-row no-gutters class="text-start">
+										<v-col cols="auto" class="ps-2">
+											<v-btn class="primary" icon small>
+												<v-icon color="white" small>mdi-twitter</v-icon>
+											</v-btn>
+										</v-col>
+										<v-col cols="expand" class="pa-0 body-1 font-weight-bold">@ArfajLaw</v-col>
+									</v-row>
+								</a>
+							</v-col>
+							<v-col cols="10" sm="3" lg="3">
+								<a href="tel:+966112173477" target="_blank">
+									<v-row no-gutters class="text-start">
+										<v-col cols="auto" class="ps-2">
+											<v-btn class="primary" icon small>
+												<v-icon color="white" small>mdi-phone</v-icon>
+											</v-btn>
+										</v-col>
+										<v-col cols="expand" class="pa-0 body-1 font-weight-bold">+966 112 173 477
+										</v-col>
+									</v-row>
+								</a>
+							</v-col>
+							<v-col cols="10" sm="2" lg="2">
+								<a href="https://www.linkedin.com/company/arfajlaw" target="_blank">
+									<v-row no-gutters class="text-start">
+										<v-col cols="auto" class="ps-2">
+											<v-btn class="primary" icon small>
+												<v-icon color="white" small>mdi-linkedin</v-icon>
+											</v-btn>
+										</v-col>
+										<v-col cols="expand" class="pa-0 body-1 font-weight-bold">ArfajLaw</v-col>
+									</v-row>
+								</a>
+							</v-col>
+							<v-col cols="10" sm="3" lg="3">
+								<a href="mailto:info@ArfajLaw.com">
+									<v-row no-gutters class="text-start">
+										<v-col cols="auto" class="ps-2">
+											<v-btn class="primary" icon small>
+												<v-icon color="white" small>mdi-email</v-icon>
+											</v-btn>
+										</v-col>
+										<v-col cols="expand" class="pa-0 body-1 font-weight-bold">Info@ArfajLaw.com
+										</v-col>
+									</v-row>
+								</a>
+							</v-col>
+							<v-col cols="10" sm="2" lg="2">
+								<a href="https://goo.gl/maps/MyfssuGGsPv8E4oB7" target="_blank">
+									<v-row no-gutters class="text-start">
+										<v-col cols="auto" class="ps-2">
+											<v-btn class="primary" icon small>
+												<v-icon color="white" small>mdi-map</v-icon>
+											</v-btn>
+										</v-col>
+										<v-col cols="expand" class="pa-0 body-1 font-weight-bold">Location</v-col>
+									</v-row>
+								</a>
+							</v-col>
+						</v-row>
+					</v-container>
+				</v-card-text>
+			</v-card>
+
+			<app-floaty-socials small-buttons :socials="socialsNetworks" color="primary lighten-1"
+				icon="mdi-account-group"></app-floaty-socials>
+		</v-main>
+
+		<v-footer height="auto" class="primary">
+			<v-row justify="center">
+				<v-col cols="12" class="py-4 text-center white--text">
+					&copy;2020 —
+					<strong>العرفج وشركاؤه</strong>
+				</v-col>
+			</v-row>
+		</v-footer>
+	</v-app>
+
+	<!-- Libraries -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.7/dist/vuetify.min.js"></script>
+
+	<!-- Mixins -->
+	<script src="../mixins/vuetify-mixin-ar.js"></script>
+	<script src="../mixins/common-mixin.js"></script>
+
+	<!-- Components -->
+	<script src="../components/app-big-background.js"></script>
+	<script src="../components/app-more-info.js"></script>
+	<script src="../components/app-team.js"></script>
+	<script src="../components/app-titled-paragraph.js"></script>
+	<script src="../components/app-floaty-socials.js"></script>
+	<script src="../app-toolbar-ar.js"></script>
+
+	<!-- Main -->
+	<script>
+		new Vue({
+			mixins: [commonMixin],
+			el: "#app",
+			vuetify,
+			data: {
+				paragraphs: [
+					"العرفج وشركاؤه هي شركة مهنية سعودية للمحاماة والاستشارات القانونية الدولية، نوفر من خلالها مجموعة واسعة من الخدمات القانونية المهنية لعملائنا الكرام. عملاؤنا هم شركاؤنا ونجاحهم نجاحنا. لذا فنحن دائمًا ملتزمون بتقديم خدماتنا القانونية لهم بدرجة عالية من الجودة والإبداع وذلك لمساعدتهم في تحقيق أهدافهم العملية طويلة المدى والتغلب على التحديات القانونية بشكل فعال وتكلفة منافسة. تتنوع فئات عملائنا من الشركات العريقة، ورواد الأعمال المبتدئين، والجهات الحكومية والكيانات المملوكة للدولة.",
+					"يتكون فريقنا من محامين سعوديين مؤهلين دوليًا ولديهم خبرة واسعة في مجموعة من المجالات المختلفة في عالم المحاماة والاستشارات القانونية. فقبل الانضمام إلى شركة العرفج وشركاؤه تضمنت خبرات فريقنا العمل في مكاتب محاماة عالمية كبيرة محليًا ودوليًا، وشركات عالمية كبيرة، وعدة جهات حكومية. ومن خلال إطار عملنا كفريق واحد محترف، فإننا نركز على ممارسة مهنة المحاماة والاستشارات القانونية بأقصى قدر من النزاهة والشفافية ووفقًا لالتزاماتنا القانونية والمهنية. كما أننا على اتصال وتعاون مع شركات محاماة عالمية رائدة، نتعاون معهم في العمل كفريق واحد على مشاريع دولية متعددة فنستفيد من خبراتهم الدولية ونوفر لهم خبرتنا القانونية المرتبطة بالمملكة العربية السعودية. هدفنا الرئيسي هو تقديم أعلى جودة من الخدمات القانونية وإضافة قيمة حقيقية لشركائنا من العملاء."
+				],
+				expertise: [
+					{ title: "الشركات والاندماج والاستحواذ", icon: "mdi-briefcase", description: "عمليات الاندماج والاستحواذ العامة والخاصة، والمشاريع المشتركة، والاستثمار الأجنبي، والشركات الناشئة، وإعادة هيكلة الشركات وحوكمة الشركات." },
+					{ title: "أسواق المال", icon: "mdi-finance ", description: "الاكتتابات العامة الأولية، واكتتابات حقوق الأولوية، والاكتتابات الثانوية أو الموازية، والاكتتابات الخاصة، والصناديق، والصكوك، وعمليات الاندماج والاستحواذ العامة." },
+					{ title: "الطاقة", icon: "mdi-atom ", description: "مشاريع الطاقة النووية، ومشاريع الطاقة المتجددة، ومشاريع البتروكيماويات، ومشاريع النفط والغاز." },
+					{ title: "الأنظمة التجارية والعمالية", icon: "mdi-clipboard-account-outline", description: "الاتفاقيات التجارية والاستشارات النظامية والمسائل المتعلقة بأنظمة العمل والموارد البشرية." },
+					{ title: "التقاضي وتسوية المنازعات ", icon: "mdi-scale-balance", description: "الترافع أمام الجهات القضائية واللجان شبه القضائية والتحكيم وغيرها من الطرق البديلة لتسوية المنازعات." },
+				],
+				team: [
+					{
+						name: "خالد العرفج",
+						img: "./team/khalid/Khalid-Alarfaj.jpg",
+						position: "الشريك المدير",
+						link: "./team/khalid/"
+					},
+				],
+				items: [
+				{
+						title: "الحدود الجديدة للإبلاغ عن عمليات التركز الاقتصادي وزيادة في تنفيذ مراقبة عمليات التركز الاقتصادي في المملكة العربية السعودية",
+						date: "2023-12-13",
+						preview: 'في 17 ربيع الثاني 1445هـ (الموافق 1 نوفمبر 2023م)، أعلنت الهيئة العامة للمنافسة في المملكة العربية السعودية ("الهيئة") عن تعديلات مهمة للحد الأدنى للإبلاغ عن التركز الاقتصادي فيما يخص عمليات الاندماج والاستحواذ',
+						link: "./insights/New-Thresholds-for-Merger-Filings-and-Increasing-Merger-Control-Enforcement-in-Saudi-Arabia"
+					},
+					{
+
+						title: "تعديل قواعد طرح الأوراق المالية والالتزامات المستمرة",
+						date: "2022-3-24",
+						preview: "اعتمد مجلس هيئة السوق المالية في 3 مارس 2022 تعديل قواعد طرح الأوراق المالية والالتزامات المستمرة. وقد جاءت التعديلات لتنظيم خيار إضافي يتم من خلاله زيادة رأس مال الشركات المدرجة في السوق المالية (السوق الرئيسية والسوق الموازية (نمو))",
+						link: "./insights/new-option-to-increase-listed-companies-capital/",
+					},
+					{
+						title: "تأجيل موعد العمل بنظام حماية البيانات الشخصية",
+						date: "2022-3-24",
+						preview: "أعلنت الهيئة السعودية للبيانات والذكاء الاصطناعي ('سدايا') عن تأجيل العمل بنظام حماية البيانات الشخصية",
+						link: "./news/postponement-of-personal-data-protection-law/",
+					},
+					// {
+					// 	title: "تحول الطاقة في المملكة العربية السعودية",
+					// 	date: "2022-3-15",
+					// 	preview: "تصدرت المملكة العربية السعودية أخبار البيئة والطاقة في الأشهر القليلة، الماضية حيث تشهد المملكة تغييرات كبيرة.",
+					// 	link: "./insights/Energy-Transition-in-Saudi-Arabia/",
+					// },
+				]
+			}
+		});
+	</script>
+</body>
+
+</html>

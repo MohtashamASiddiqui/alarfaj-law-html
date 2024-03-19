@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <!-- Primary Meta Tags -->
+    <title>News and Insights</title>
+    <meta name="title" content="News and Insights">
+    <meta name="description" content="Latest News and Inisghts from Arfaj Law Firm">
+    <meta itemprop="image" content="https://arfajlaw.com/Logo/whiteLogo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://arfajlaw.com/ar/all">
+    <meta property="twitter:title" content="Latest News and Inisghts from Arfaj Law Firm">
+    <meta property="twitter:image" content="https://arfajlaw.com/Logo/whiteLogo.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arfajlaw.com/ar/all">
+    <meta property="og:title" content="Latest News and Inisghts from Arfaj Law Firm">
+    <meta property="og:image" itemprop="image" content="https://arfajlaw.com/Logo/whiteLogo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.3.7/dist/vuetify.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <v-app id="app" v-cloak>
+        <app-toolbar></app-toolbar>
+
+        <v-main app>
+            <v-card tile outlined>
+                <v-row>
+                    <v-col cols="8" md="9">
+                        <v-card-title class="text-lg-h4 primary--text">
+                            News and Insights
+                        </v-card-title>
+                    </v-col>
+                    <v-col cols="4" md="3">
+                        <v-select v-model="selected" :items="types" label="Select" multiple persistent-hint></v-select>
+                    </v-col>
+                </v-row>
+            </v-card>
+            <v-row justify="center" class="pt-4 pb-2">
+                <v-col cols="12" md="10" lg="8">
+                    <v-card flat title="News" id="news">
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" v-for="item in filtered">
+                                        <v-card :href="item.link">
+                                            <v-card-text class="body-2 primary white--text">
+                                                {{item.type}}
+                                            </v-card-text>
+                                            <v-card-text class="body-2 font-weight-bold py-0 primary white--text">
+                                                <div class=" max-2-lines">
+                                                    {{ item.title }}
+                                                </div>
+                                            </v-card-text>
+                                            <v-card-actions class="pl-4 primary white--text">
+                                                {{item.writer}}
+                                                <v-spacer></v-spacer>
+                                                {{ item.date }}
+                                            </v-card-actions>
+                                            <v-card-text>
+                                                <v-row no-gutters>
+                                                    <v-col style=" overflow: hidden; text-overflow: ellipsis;">
+                                                        <span class=" max-3-lines">
+                                                            {{ item.preview }}
+                                                        </span>
+                                                    </v-col>
+                                                    &nbsp;
+                                                </v-row>
+                                                <v-row justify="center">
+                                                    <a :href="item.link">Read More</a>
+                                                </v-row>
+                                            </v-card-text>
+
+                                        </v-card>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
+                    </v-card>
+
+                </v-col>
+            </v-row>
+
+            <app-floaty-socials small-buttons :socials="socialsNetworks" color="primary lighten-1"
+                icon="mdi-account-group"></app-floaty-socials>
+        </v-main>
+
+        <v-footer height="auto" class="primary">
+            <v-row justify="center">
+                <v-col cols="12" class="py-4 text-center white--text">
+                    &copy;2020 —
+                    <strong>AlArfaj & Partners</strong>
+                </v-col>
+            </v-row>
+        </v-footer>
+    </v-app>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.7/dist/vuetify.min.js"></script>
+
+    <!-- Mixins -->
+    <script src="../../mixins/vuetify-mixin.js"></script>
+    <script src="../../mixins/common-mixin.js"></script>
+
+    <!-- Components -->
+    <script src="../../../components/app-floaty-socials.js"></script>
+    <script src="../../app-toolbar.js"></script>
+
+    <!-- Main -->
+    <script>
+        new Vue({
+            mixins: [commonMixin],
+            el: "#app",
+            vuetify,
+            data() {
+                return {
+                    items: [// !important always post newest on top, or write a sort method
+                    {
+                            title: "New Thresholds for Merger Filings and Increasing Merger Control Enforcement in Saudi Arabia",
+                            date: "December 13, 2022",
+                            preview: "On November 1, 2023, the Kingdom of Saudi Arabia’s General Authority for Competition (the “GAC”) announced significant revisions to its merger control notification thresholds.", 
+                            link: "../insights/new-thresholds-for-merger-filings-and-increasing-merger-control-enforcement-in-saudi-arabia",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj, Sarah AlQahtani"
+
+                        },
+                        {
+                            title: "Amendment to the Rules for Offering Securities and Continuing Obligations",
+                            date: "March 24, 2022",
+                            preview: "The Board of the Capital Market Authority approved the amendment to The Rules on the Offer of Securities and Continuing Obligations.", 
+                            link: "../insights/new-option-to-increase-listed-companies-capital",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj, Abdulrahman AlHusain, Sarah AlShalan"
+
+                        },
+                        {
+                            title: "Postponement of Full Enforcement of the Personal Data Protection Law",
+                            date: "March 24, 2022",
+                            preview: "The Saudi Data and Artificial Intelligence Authority ('SDAIA') postpones the full enforcement of the Saudi Personal Data Protection Law",
+                            link: "../news/postponement-of-personal-data-protection-law/",
+                            type: "News",
+                        },
+                        {
+                            title: "Energy Transition in Saudi Arabia",
+                            date: "March 15, 2022",
+                            preview: "Kingdom of Saudi Arabia has been in the forefront of the environmental and energy news. Big changes are happening.",
+                            link: "../insights/Energy-Transition-in-Saudi-Arabia",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj"
+                        },
+                        {
+                            title: "Mergers & Acquisitions Comparative Guide",
+                            date: "February 14, 2022",
+                            preview: "AlArfaj & Partners’ managing partner Khalid AlArfaj authored the Saudi Arabia chapter of Mondaq’s M&A Country Comparative Guide.",
+                            link: "../insights/mergers-acquisitions-comparative-guide",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj"
+                        },
+                        {
+                            title: "Highlights of Personal Data Protection Law",
+                            date: "October 28, 2021",
+                            preview: "The Kingdom of Saudi Arabia (the “Kingdom”) has issued its first data protection law, the Personal Data Protection Law (the “PDPL”), to regulate the collection and processing of personal data. ",
+                            link: "../insights/Highlights-of-personal-data-protection-law",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj, Faris AlYousef"
+                        },
+                        {
+                            title: "Amendments to the Investment Funds Regulation And Real Estate Funds Regulation",
+                            link: "../insights/Amendments-to-the-Investment-Funds/",
+                            preview: "The Capital Market Authority the “CMA” is the regulator of investment funds in Saudi Arabia. The CMA announced on March 1, 2021 ",
+                            date: "April 6, 2021",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj, Layan AlQehidan"
+                        },
+                        {
+                            title: "Saudi Supreme Court’s Decision regarding the Covid-19 Pandemic Impact on Contracts",
+                            date: "February 17, 2021",
+                            preview: "The World Health Organization declared the COVID-19 as a ‘pandemic’ on March 11, 2020 (the “Pandemic“). ",
+                            link: "../insights/Saudi-Supreme-Court-Decision-regarding-the-Covid-19-Pandemic-Impact-on-Contracts",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj, Alya AlEssa"
+
+                        },
+                        {
+                            title: " Labor Reform Initiative for Private Sector Foreign Employees in Saudi Arabia",
+                            date: "November 5, 2020",
+                            preview: "The Ministry of Human Resources and Social Development ('HRSD') launched on November 4, 2020, the Labor Reform Initiative ('LRI'), which applies to all foreign employees in the private sector.",
+                            link: "../news/labor-reform-initiative",
+                            type: "News"
+                        },
+                        {
+                            title: "The New Commercial Courts Law and its Implementing Regulations: A Legislative Reform to Enhance Doing Business in Saudi Arabia",
+                            date: "August 12, 2020",
+                            preview: "An effective dispute resolution system is essential for local and foreign companies undertaking business in the kingdom. As a step to enhance the business environment, the Saudi Commercial Courts Law (the “Law”) its Implementing Regulations (the “Regulations”) have been enacted",
+                            link: "../insights/New-Commercial-Courts-Law/",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj"
+
+                        },
+                        {
+                            title: "Saudi Government Increases VAT Rate from 5% to 15%, Effective July 1, 2020",
+                            date: "July 1, 2020",
+                            preview: "As of July 1, 2020, the value-added tax (“VAT”) rate in Saudi Arabia increases from 5% to 15%. Saudi Arabia’s Value-Added Tax Law (the “VAT Law”) was published in 2017 and came into effect on January 1, 2018.",
+                            link: "../news/vat-increase/",
+                            type: "News"
+                        },
+                        {
+                            title: "New KSA Professional Companies Law and Implementing Regulations",
+                            date: "June 24, 2020",
+                            preview: "On April 24, 2020, the Implementing Regulations of the new Professional Companies Law (the “Regulations”) had been issued.",
+                            link: "../insights/New-KSA-Professional-Companies-Law-and-Implementing-Regulations/",
+                            type: "Insights",
+                            writer: "Khalid Alarfaj"
+                        },
+                        {
+                            title: "Saudi Arabia Government Announces Gradual Reopening of the Country",
+                            date: "May 31, 2020",
+                            preview: "As of Sunday, May 31, the offices of Saudi Arabian ministries, government agencies and private sector companies will reopen and attendance to the workplaces will be implemented gradually",
+                            link: "../news/saudi-reopening/",
+                            type: "News"
+                        },
+                        
+
+                    ],
+                    types: ['News', 'Insights'],
+                    selected: ['News', 'Insights']
+                }
+            },
+            computed: {
+                filtered: function () {
+                    result = []
+                    this.items.forEach(item => {
+                        for (var i = 0; i < this.selected.length; i++) {
+                            if (item.type == this.selected[i]) {
+                                result.push(item)
+                                break
+                            }
+                        }
+                    });
+                    return result
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
